@@ -1,0 +1,17 @@
+.osb-pocket-poke-holder {
+  .pokeList {
+    h2 {
+      text-transform: uppercase;
+    }
+
+    .img-holder {
+      min-width: 120px;
+      min-height: 140px;
+      background: $color-black;
+
+      img {
+        margin: auto;
+      }
+    }
+  }
+}

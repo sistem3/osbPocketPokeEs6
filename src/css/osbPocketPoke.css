@@ -1,2 +1,16 @@
+.osb-pocket-poke-holder h1, .osb-pocket-poke-holder h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #000; }
+
+.osb-pocket-poke-holder .pokeList h2 {
+  text-transform: uppercase; }
+
+.osb-pocket-poke-holder .pokeList .img-holder {
+  min-width: 120px;
+  min-height: 140px;
+  background: #000; }
+  .osb-pocket-poke-holder .pokeList .img-holder img {
+    margin: auto; }
 
 /*# sourceMappingURL=osbPocketPoke.css.map */
