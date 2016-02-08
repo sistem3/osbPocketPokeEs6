@@ -1,0 +1,25 @@
+{
+  "name": "osb-pocket-poke",
+  "version": "0.0.1",
+  "authors": [
+    "Ben Burton <sistematic3@yahoo.co.uk>"
+  ],
+  "description": "web component for displaying Pokemon trivia",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "es6-promise": "~3.0.2",
+    "fetch": "~0.10.1",
+    "scrollmagic": "~2.0.5"
+  }
+}
