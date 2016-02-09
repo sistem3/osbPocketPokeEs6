@@ -59,16 +59,16 @@
         renderMainList(data) {
             this.$pokeListing.innerHTML +=
                 '<li id="' + data.name + '" class="col-md-3" poke-id="' + data.id + '">' +
-                    '<div class="img-holder"></div>' +
+                    '<div class="img-holder text-center"></div>' +
                     '<h2>' + data.name + '</h2>' +
-                    '<h4>Height: ' + data.height + '</h4>' +
-                    '<h4>Weight: ' + data.weight + '</h4>' +
+                    '<p>Height: ' + data.height + ' Weight: ' + data.weight + '</p>' +
+                    '<div class="abilities"></div>' +
                 '</li>';
             this.getPokeSprite(data);
         };
 
         getPokeSprite(pokemon) {
-            console.log(pokemon);
+            //console.log(pokemon);
             var holder = this;
             fetch(this.pokeApiBaseLeg + 'sprite/' + pokemon.id)
                 .then(function(response) {
@@ -90,6 +90,14 @@
 
         getPokemon(pokemon) {
             var holder = this;
+            if (holder.pokemon.length > 1) {
+                holder.pokemon.forEach(function(element, index, array) {
+                   if (pokemon.name === element.name) {
+                       holder.renderMainList(element);
+                   }
+                });
+                return false;
+            }
             fetch(pokemon.url)
                 .then(function(response) {
                     if (response.status !== 200) {
@@ -98,35 +106,13 @@
                     }
                     response.json().then(function(data) {
                         holder.pokemon.push(data);
+                        localStorage.setItem('osbPocketPoke.pokemon', JSON.stringify(holder.pokemon));
                         holder.renderMainList(data);
                     });
                 })
                 .catch(function(err) {
                     console.log('Failed');
                 });
-            /*if (!holder.pokemon === null) {
-                console.log('blah');
-                holder.pokemon.forEach(function(element, index, array) {
-                    if (element.name === pokemon.name) {
-                        holder.renderMainList(element);
-                    }
-                });
-            } else {
-                fetch(pokemon.url)
-                    .then(function(response) {
-                        if (response.status !== 200) {
-                            console.log('Looks like there was a problem. Status Code: ' + response.status);
-                            return;
-                        }
-                        response.json().then(function(data) {
-                            holder.pokemon.push(data);
-                            holder.renderMainList(data);
-                        });
-                    })
-                    .catch(function(err) {
-                        console.log('Failed');
-                    });
-            }*/
         };
 
         getPokeList() {
